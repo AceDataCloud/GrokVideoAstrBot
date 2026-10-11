@@ -1,0 +1,13 @@
+name: astrbot_plugin_grok_video_acedatacloud
+display_name: Grok Video by Ace Data Cloud
+short_desc: Generate one Grok Imagine video and retrieve its final result in chat.
+desc: Submit one Grok Imagine video through your Ace Data Cloud account, then query the same task ID for its final video URL.
+version: 0.1.0
+author: acedatacloud
+repo: https://github.com/AceDataCloud/GrokVideoAstrBot
+astrbot_version: ">=4.28.2,<5"
+tags:
+  - Grok Video
+  - AI video
+  - video generation
+  - Ace Data Cloud
