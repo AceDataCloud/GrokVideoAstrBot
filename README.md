@@ -1,3 +1,52 @@
-# GrokVideoAstrBot
+# Grok Video for AstrBot
 
-Grok Video tools for AstrBot through Ace Data Cloud.
+Generate one Grok Imagine video in an AstrBot conversation through your own Ace Data Cloud account. `grok_video_generate` submits one text or image video job; `grok_video_get_task` queries the same task until its final video is ready.
+
+[简体中文指南](readme/README_zh_Hans.md) · [Grok Videos API](https://platform.acedata.cloud/documents/grok-videos) · [Grok Tasks API](https://platform.acedata.cloud/documents/grok-tasks) · [Current prices](https://platform.acedata.cloud/services/grok)
+
+## Find and install
+
+In AstrBot WebUI, open **Extensions → Plugins → AstrBot Plugin Market** and search **Grok Video**. Confirm the card says **Grok Video by Ace Data Cloud**, the author is **acedatacloud**, and the logo matches the [current Grok service icon](https://cdn.acedata.cloud/p1ge98.png). Install it, then check **Installed** for load errors.
+
+The official AstrBot Cloud listing is pending. After the source release is merged, **Installed → Install (+) → Install from URL** with `https://github.com/AceDataCloud/GrokVideoAstrBot` can preview it. A URL installation does not prove market publication.
+
+## Configure your key
+
+In [Ace Data Cloud Applications](https://platform.acedata.cloud/console/applications), copy a generation API key from your General application or create a key that permits both `/grok/videos` and `/grok/tasks`. Check the current model, duration, and resolution price and your balance before submitting. Paste the key into the plugin's **Ace Data Cloud generation API key with Grok Video access** setting. Do not add `Bearer ` or use a `platform-...` management token. AstrBot masks the field in WebUI but stores the original value in its data directory, which should be protected.
+
+Select a chat model that supports tool calling. Allow both Grok Video tools in the conversation's profile and persona.
+
+## Generate once, then query
+
+Ask the bot:
+
+> Use `grok_video_generate` exactly once to make a yellow paper kite rising over a calm green meadow. Use `grok-imagine-video-1.5-fast:reverse`, 6 seconds, 480p, 16:9. Show me the task ID.
+
+The tool sends one asynchronous `POST /grok/videos` request and returns `status: submitted` with a task ID. Keep the ID and ask:
+
+> Use `grok_video_get_task` with the exact task ID `<task_id>`. Tell me its status and final video URL. Do not generate another video.
+
+If pending, query the same ID later. Only `status: succeeded`, `success: true`, and a final HTTPS video URL indicate completion. The plugin never retries a paid submission automatically.
+
+The first version supports the four current public Grok Imagine video model names. The default fast model accepts 6–30 seconds; the other three accept 1–15 seconds. `grok-imagine-video-1.5:official` requires an image URL. To animate an image you own or may process, provide its public HTTPS `image_url`; other models also accept text alone. Supported resolutions are 480p, 720p, and 1080p. The model, duration, and resolution can change the price; some official model jobs may be charged even if moderation stops the output. Multiple reference images are outside this first version.
+
+## Verify and troubleshoot
+
+Match a returned trace ID in Ace Data Cloud usage when available. A finished task may include public `cost` amounts in Credits; confirm the live usage row before treating an estimate as a charge. Task lookup reads an existing job and does not submit another generation.
+
+| Symptom | Check |
+| --- | --- |
+| Plugin fails to load | AstrBot version, **Failed to Load Plugins**, and **Data & Logs → Logs**. |
+| Tools are missing | Plugin enabled, both tools allowed in the active profile and persona, chat model supports tool calling. |
+| HTTP 401/403 | Key type, both allowed API paths, and account access. |
+| Network error after submission | Inspect request history before generating again; a timeout may already have created a paid task. |
+| Pending task | Query the same task ID later. |
+| Failed task | Use the task or trace ID to inspect request history. |
+
+The key goes only to `https://api.acedata.cloud`; redirects are rejected. The plugin exposes final video URLs and public cost fields to the model, without raw internal data. It uses Python's standard library and needs no runtime package installation.
+
+## Validation and brand asset
+
+On official AstrBot `v4.28.2`, an isolated editable installation registered both tools. ChatUI submitted one 6-second `grok-imagine-video-1.5-fast:reverse` text video at 480p and queried the same task ID twice; the first lookup was pending and the second returned success, with no second generation. The final MP4 responded HTTP 200, `video/mp4`, and decoded as H.264 video with AAC audio, 752×416, 6.042 seconds. The exact generation trace matched one successful `/grok/videos` usage row with 0.567 Credits deducted; the task returned 0.63 Credits as its list amount. See the [sanitized evidence](tests/e2e-results.json). Image-to-video and other models and settings were validated structurally but not generated. This is a local editable installation; official Cloud review, market installation, and a first call from a market installation remain open.
+
+`logo.png` is the unmodified 400×400 [current Grok service icon](https://cdn.acedata.cloud/p1ge98.png), SHA-256 `8051b3d467ab852418f25c8057349313d4453b00b488b910ccdb5e233e44d7ab`.

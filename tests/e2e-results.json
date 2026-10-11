@@ -1,0 +1,36 @@
+{
+  "environment": {
+    "astrbot_version": "4.28.2",
+    "installation": "isolated editable local plugin installation",
+    "chat_model": "gpt-4.1-mini through the generic OpenAI-compatible source",
+    "marketplace_installation": "not tested; AstrBot Cloud listing pending"
+  },
+  "primary_case": {
+    "model": "grok-imagine-video-1.5-fast:reverse",
+    "duration_requested": 6,
+    "resolution_requested": "480p",
+    "aspect_ratio_requested": "16:9",
+    "generation_tool": "grok_video_generate",
+    "generation_tool_calls": 1,
+    "lookup_tool": "grok_video_get_task",
+    "lookup_tool_calls_in_chat": 2,
+    "lookup_note": "The first lookup returned pending; the second lookup of the same task ID returned terminal success. No second generation was submitted.",
+    "task_id": "4822417c-7356-4357-a808-977f89ab673b",
+    "trace_id": "1f2d9e0a-a800-4b2c-a271-e29869f2f012",
+    "terminal_status": "succeeded",
+    "video_count": 1,
+    "video_url": "https://platform2.cdn.acedata.cloud/grok/4822417c-7356-4357-a808-977f89ab673b.mp4",
+    "media_http_status": 200,
+    "media_content_type": "video/mp4",
+    "video_codec": "h264",
+    "audio_codec": "aac",
+    "video_width": 752,
+    "video_height": 416,
+    "duration_seconds": 6.042,
+    "usage_api_path": "/grok/videos",
+    "usage_status_code": 200,
+    "task_list_amount_credits": 0.63,
+    "usage_deducted_credits": 0.567
+  },
+  "scope_limit": "Text-to-video and same-task lookup were run through AstrBot chat. Image-to-video, other models, durations, and resolutions were validated structurally but not generated. Official market installation remains open."
+}
