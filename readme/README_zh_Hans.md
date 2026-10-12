@@ -2,7 +2,7 @@
 
 通过您自己的 Ace Data Cloud 账号，在 AstrBot 对话中生成一条 Grok Imagine 视频。`grok_video_generate` 提交一次文生或图生视频任务，`grok_video_get_task` 用同一个任务 ID 查询最终结果。
 
-[English guide](../README.md) · [Grok Videos 接口](https://platform.acedata.cloud/documents/grok-videos) · [Grok Tasks 接口](https://platform.acedata.cloud/documents/grok-tasks) · [当前价格](https://platform.acedata.cloud/services/grok)
+[English guide](../README.md) · [Grok Videos 接口](https://platform.acedata.cloud/documents/grok-videos?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=grokvideoastrbot_readme_documents_grok_videos) · [Grok Tasks 接口](https://platform.acedata.cloud/documents/grok-tasks?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=grokvideoastrbot_readme_documents_grok_tasks) · [当前价格](https://platform.acedata.cloud/services/grok?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=grokvideoastrbot_readme_services_grok)
 
 ## 查找与安装
 
@@ -12,7 +12,9 @@
 
 ## 配置密钥
 
-在 [Ace Data Cloud 应用管理](https://platform.acedata.cloud/console/applications)复制生成 API Key，或创建同时允许 `/grok/videos` 与 `/grok/tasks` 的 Key。提交前核对当前模型、时长、分辨率价格和余额。将 Key 填入插件的 **Ace Data Cloud generation API key with Grok Video access** 配置项，不要添加 `Bearer `，也不要使用 `platform-...` 管理令牌。AstrBot WebUI 会遮蔽显示此字段，但原值保存在数据目录中，请保护该目录。
+首次使用请先注册并登录；如果应用页还没有通用应用，点击 **初始化通用应用（Initialize General Application）**，再按下面步骤管理密钥。
+
+在 [Ace Data Cloud 应用管理](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=grokvideoastrbot_readme_api_key)复制生成 API Key，或创建同时允许 `/grok/videos` 与 `/grok/tasks` 的 Key。提交前核对当前模型、时长、分辨率价格和余额。将 Key 填入插件的 **Ace Data Cloud generation API key with Grok Video access** 配置项，不要添加 `Bearer `，也不要使用 `platform-...` 管理令牌。AstrBot WebUI 会遮蔽显示此字段，但原值保存在数据目录中，请保护该目录。
 
 选择支持工具调用的对话模型，并在当前对话的 profile 与 persona 中允许两个 Grok Video 工具。
 
