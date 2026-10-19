@@ -2,19 +2,41 @@
 
 Generate one Grok Imagine video in an AstrBot conversation through your own Ace Data Cloud account. `grok_video_generate` submits one text or image video job; `grok_video_get_task` queries the same task until its final video is ready.
 
-[简体中文指南](readme/README_zh_Hans.md) · [Grok Videos API](https://platform.acedata.cloud/documents/grok-videos) · [Grok Tasks API](https://platform.acedata.cloud/documents/grok-tasks) · [Current prices](https://platform.acedata.cloud/services/grok)
+This independent **Grok Video integration is provided by Ace Data Cloud**; it is not an official plugin from the Grok Video publisher or the AstrBot team. Use your own Ace API key.
 
-## Find and install
+[简体中文指南](readme/README_zh_Hans.md) · [Grok Videos API](https://platform.acedata.cloud/documents/grok-videos?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=grokvideoastrbot_readme_documents_grok_videos) · [Grok Tasks API](https://platform.acedata.cloud/documents/grok-tasks?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=grokvideoastrbot_readme_documents_grok_tasks) · [Current prices](https://platform.acedata.cloud/services/grok?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=grokvideoastrbot_readme_services_grok)
 
-In AstrBot WebUI, open **Extensions → Plugins → AstrBot Plugin Market** and search **Grok Video**. Confirm the card says **Grok Video by Ace Data Cloud**, the author is **acedatacloud**, and the logo matches the [current Grok service icon](https://cdn.acedata.cloud/p1ge98.png). Install it, then check **Installed** for load errors.
+## 1. Find and install
 
-The official AstrBot Cloud listing is pending. After the source release is merged, **Installed → Install (+) → Install from URL** with `https://github.com/AceDataCloud/GrokVideoAstrBot` can preview it. A URL installation does not prove market publication.
+Current upstream navigation is **Plugins → Plugins → Plugin Market / Installed**; older English versions may label the section Extensions. Search **Grok Video** and verify **Grok Video by Ace Data Cloud**, author **acedatacloud**, and the matching service icon.
+
+**Publication status on 2026-10-19: not publicly listed in the official market.** The market search/install instructions above apply after publication. For the current preview, use the repository path below rather than waiting for a card that is not there.
+
+Repository installation: **Plugins → Plugins → Installed → Install Plugin (+) → Install from URL**, with `https://github.com/AceDataCloud/GrokVideoAstrBot`. Source is already available. Confirm it is enabled and loaded. A repository/file installation is a separate path from official market installation.
 
 ## Configure your key
 
-In [Ace Data Cloud Applications](https://platform.acedata.cloud/console/applications), copy a generation API key from your General application or create a key that permits both `/grok/videos` and `/grok/tasks`. Check the current model, duration, and resolution price and your balance before submitting. Paste the key into the plugin's **Ace Data Cloud generation API key with Grok Video access** setting. Do not add `Bearer ` or use a `platform-...` management token. AstrBot masks the field in WebUI but stores the original value in its data directory, which should be protected.
+New account? Register and sign in first. If the Applications page has no General application yet, choose **Initialize General Application**, then continue with the key steps below.
+
+In [Ace Data Cloud Applications](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=grokvideoastrbot_readme_api_key), copy a generation API key from your General application or create a key that permits both `/grok/videos` and `/grok/tasks`. Check the current model, duration, and resolution price and your balance before submitting. Paste the key into the plugin's **Ace Data Cloud generation API key with Grok Video access** setting. Do not add `Bearer ` or use a `platform-...` management token. AstrBot masks the field in WebUI but stores the original value in its data directory, which should be protected.
 
 Select a chat model that supports tool calling. Allow both Grok Video tools in the conversation's profile and persona.
+
+### Token screenshots: copy or create a dedicated key
+
+[Register or sign in to Ace](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=grokvideoastrbot_readme_signup), then open **Applications → General application** and initialize it if absent. Use **1** to copy the selected key, or **2 Manage Keys → Create** for a dedicated key. If Allowed APIs is enabled, include `/grok/tasks` and `/grok/videos`; check current entitlement, balance and prices before use.
+
+![Copy an Ace key or open Manage Keys (redacted)](_assets/tutorial/get-api-key-en.png)
+
+Use a name such as `AstrBot Grok Video` and set expiry/limits as needed. The screenshot’s `Dify tutorial` is an older example, not a required label.
+
+![Create an optional dedicated API key (shared Ace page, not AstrBot)](_assets/tutorial/create-api-key-en.png)
+
+Images were reused and checked on **2026-10-19**; original capture dates are unknown. Credentials, App ID and balance are redacted. This is the shared Ace Applications UI, not proof of AstrBot installation or a live service call. [Image sources and limits](_assets/tutorial/sources.json).
+
+### Where to paste it in AstrBot
+
+Open **Plugins → Plugins → Installed**, select the gear (**Plugin Configuration**) on **Grok Video by Ace Data Cloud**, paste the key into **Ace Data Cloud generation API key with Grok Video access** (stored field `api_key`), and save. Paste the key only, with no `Bearer ` prefix; never put it in model-provider settings or a chat prompt. UI masking does not encrypt the data-directory config. These are exact text steps; no fabricated settings image is used.
 
 ## Generate once, then query
 
