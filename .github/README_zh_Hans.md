@@ -6,11 +6,11 @@
 
 这是 **Ace Data Cloud 提供的 Grok Video 独立集成**，不是 Grok Video 厂商或 AstrBot 团队的官方插件。请使用自己的 Ace API Key。
 
-[English guide](README.md) · [Grok Videos 接口](https://platform.acedata.cloud/documents/grok-videos?utm_source=github&utm_medium=referral&utm_campaign=evergreen&utm_content=grokvideoastrbot_readme_documents_grok_videos) · [Grok Tasks 接口](https://platform.acedata.cloud/documents/grok-tasks?utm_source=github&utm_medium=referral&utm_campaign=evergreen&utm_content=grokvideoastrbot_readme_documents_grok_tasks) · [当前价格](https://platform.acedata.cloud/services/grok?utm_source=github&utm_medium=referral&utm_campaign=evergreen&utm_content=grokvideoastrbot_readme_services_grok)
+[English guide](README.md) · [Grok Videos 接口](https://platform.acedata.cloud/documents/grok-videos?utm_source=github&utm_medium=referral&utm_campaign=evergreen) · [Grok Tasks 接口](https://platform.acedata.cloud/documents/grok-tasks?utm_source=github&utm_medium=referral&utm_campaign=evergreen) · [当前价格](https://platform.acedata.cloud/services/grok?utm_source=github&utm_medium=referral&utm_campaign=evergreen)
 
 ## 1. 查找与安装
 
-当前上游菜单为 **插件 → 顶部插件 → 插件市场 / 已安装**；旧英文版本可能仍写 Extensions。在插件市场搜索 **Grok Video**，核对 **Grok Video by Ace Data Cloud**、作者 **acedatacloud** 与对应服务图标。
+当前上游菜单为 **插件 → 顶部插件 → 插件市场 / 已安装**；旧英文版本可能仍写 Extensions。在插件市场搜索 **Grok Video**，核对 **Grok Video**、作者 **acedatacloud** 与对应服务图标。
 
 **2026-10-19 发布状态：尚未在官方市场公开上架。** 上面的搜索/安装是正式上架后的路径；当前不要等待不存在的卡片，请用下一段的仓库地址手动安装。
 
@@ -20,13 +20,13 @@
 
 首次使用请先注册并登录；如果应用页还没有通用应用，点击 **初始化通用应用（Initialize General Application）**，再按下面步骤管理密钥。
 
-在 [Ace Data Cloud 应用管理](https://platform.acedata.cloud/console/applications?utm_source=github&utm_medium=referral&utm_campaign=evergreen&utm_content=grokvideoastrbot_readme_api_key)复制生成 API Key，或创建同时允许 `/grok/videos` 与 `/grok/tasks` 的 Key。提交前核对当前模型、时长、分辨率价格和余额。将 Key 填入插件的 **Ace Data Cloud generation API key with Grok Video access** 配置项，不要添加 `Bearer `，也不要使用 `platform-...` 管理令牌。AstrBot WebUI 会遮蔽显示此字段，但原值保存在数据目录中，请保护该目录。
+在 [Ace Data Cloud 应用管理](https://platform.acedata.cloud/console/applications?utm_source=github&utm_medium=referral&utm_campaign=evergreen)复制生成 API Key，或创建同时允许 `/grok/videos` 与 `/grok/tasks` 的 Key。提交前核对当前模型、时长、分辨率价格和余额。将 Key 填入插件的 **Ace Data Cloud generation API key with Grok Video access** 配置项，不要添加 `Bearer `，也不要使用 `platform-...` 管理令牌。AstrBot WebUI 会遮蔽显示此字段，但原值保存在数据目录中，请保护该目录。
 
 选择支持工具调用的对话模型，并在当前对话的 profile 与 persona 中允许两个 Grok Video 工具。
 
 ### Token 图文：复制或创建专用 Key
 
-先[注册或登录 Ace](https://platform.acedata.cloud/console/applications?utm_source=github&utm_medium=referral&utm_campaign=evergreen&utm_content=grokvideoastrbot_readme_signup)，打开 **Applications → General application**；没有通用应用时先初始化。图中 **1** 复制现有 Key，**2 Manage Keys → Create** 创建专用 Key。API 限制开启时应包含 `/grok/tasks`、`/grok/videos`，并检查账户当前权限、余额与价格。
+先[注册或登录 Ace](https://platform.acedata.cloud/console/applications?utm_source=github&utm_medium=referral&utm_campaign=evergreen)，打开 **Applications → General application**；没有通用应用时先初始化。图中 **1** 复制现有 Key，**2 Manage Keys → Create** 创建专用 Key。API 限制开启时应包含 `/grok/tasks`、`/grok/videos`，并检查账户当前权限、余额与价格。
 
 ![Ace 应用页复制 Key 或管理 Key（已脱敏）](../_assets/tutorial/get-api-key-en.png)
 
@@ -38,7 +38,7 @@
 
 ### 在 AstrBot 填写哪里
 
-打开 **插件 → 插件 → 已安装**，点击 **Grok Video by Ace Data Cloud** 卡片齿轮（插件配置），在 **Ace Data Cloud generation API key with Grok Video access**（字段 `api_key`）粘贴 Key 并保存。只填 Key 本身，不加 `Bearer `；不填到模型提供商或聊天消息。界面遮罩不加密磁盘配置，请保护 AstrBot 数据目录。此处提供准确文字路径；不以假界面代替本插件最新设置截图。
+打开 **插件 → 插件 → 已安装**，点击 **Grok Video** 卡片齿轮（插件配置），在 **Ace Data Cloud generation API key with Grok Video access**（字段 `api_key`）粘贴 Key 并保存。只填 Key 本身，不加 `Bearer `；不填到模型提供商或聊天消息。界面遮罩不加密磁盘配置，请保护 AstrBot 数据目录。此处提供准确文字路径；不以假界面代替本插件最新设置截图。
 
 ## 生成一次，然后查询
 
